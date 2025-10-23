@@ -75,7 +75,7 @@ app.use('/images', express.static(uploadPath));
 if (process.env.NODE_ENV === 'production') {
     // In production, serve the static frontend build
     app.use(express.static(path.join(__dirname, '/frontend/dist')));
-    
+
     // Any route not handled by the API should serve the index.html from the frontend build
     app.get('*', (req, res) =>
         res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
@@ -83,7 +83,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     // In development, provide a simple message for the root URL
     app.get('/', (req, res) => {
-        res.send('API is running...');
+        res.sendFile(path.resolve(__dirname, 'README.md'));
     });
 }
 
