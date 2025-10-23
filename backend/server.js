@@ -81,9 +81,9 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
     );
 } else {
-    // In development, provide a simple message for the root URL
+    // In development, redirect to the frontend dev server
     app.get('/', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'README.md'));
+        res.redirect('http://localhost:5173');
     });
 }
 
